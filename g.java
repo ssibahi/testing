@@ -4,7 +4,7 @@ public class g{
 
    public static void main(String args[]){
 
-System.out.println("Wellcome Shahar");
+System.out.println("Shahar");
 
 	 }
 
