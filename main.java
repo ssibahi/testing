@@ -1,6 +1,9 @@
 
 
 
-
-system.out.println("hello Shahar");
+public class Hello {
+    public static void main(String args[]){
+        System.out.println("Welcome Shahar");
+    }
+}
 
