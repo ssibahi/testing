@@ -139,7 +139,7 @@ function create_archive() {
         tar czvf cloudband-cbnd.${DEV}-${RELEASE_BUILD}-docs.tar.gz docs/
         tar czvf cloudband-cbnd.${DEV}-${RELEASE_BUILD}-artifacts.tar.gz artifacts/
 
-        rm -rf sources docs artifacts
+        #rm -rf sources docs artifacts
 
    }
             else
@@ -148,7 +148,7 @@ function create_archive() {
         tar czvf cloudband-cbis.${DEV}-${RELEASE_BUILD}-source.tar.gz sources/
         tar czvf cloudband-cbis.${DEV}-${RELEASE_BUILD}-docs.tar.gz docs/
         tar czvf cloudband-cbis.${DEV}-${RELEASE_BUILD}-artifacts.tar.gz artifacts/
-        rm -rf sources docs artifacts
+       #rm -rf sources docs artifacts
 
 fi
 
