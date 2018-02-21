@@ -16,14 +16,15 @@ usage: $0 [OPTIONS...]
 OPTIONS:
    -p PRODUCT                   cbnd or cbis
    -v VERSION                   version release
-   -b BUILD_NUMBER              current build
-   -s SUFFIX                    P7 or P8 etc
+   -r RELEASE                   release current build
+   -pa PACKAGE                  package
+   -c CYCLE 					cycle
    -h                           show this help and exit
 
 EOF
         }
 
-        while getopts "p:v:b:s:h" opt; do
+        while getopts "p:v:r:pa:c:h" opt; do
         case $opt in
 
          p)
@@ -32,12 +33,14 @@ EOF
          v)
                 VERSION=$OPTARG
                 ;;
-         b)
-                BUILD_NUMBER=$OPTARG
+         r)
+                RELEASE=$OPTARG
                 ;;
-         s)
-                SUFFIX="_"$OPTARG
+         pa)
+                PACKAGE="_"$OPTARG
                 ;;
+		 c)		CYCLE="_"$OPTARG	
+				;;
          h)
                 usage
                 exit 1
@@ -53,7 +56,7 @@ EOF
 
 
         function init() {
-        BUILD_DIR="CloudBand_${PRODUCT}_R${VERSION}${SUFFIX}"
+        BUILD_DIR="CloudBand_${PRODUCT}_R${VERSION}${PACKAGE}${CYCLE}"
         mkdir -p ${BUILD_DIR}
         cd ${BUILD_DIR}
         mkdir sources docs
@@ -115,14 +118,14 @@ function create_archive() {
         then
 
    {
-        tar czvf cloudband-cbnd.${VERSION}-${BUILD_NUMBER}-source.tar.gz sources/
-        tar czvf cloudband-cbnd.${VERSION}-${BUILD_NUMBER}-docs.tar.gz docs/
+        tar czvf cloudband-cbnd.${VERSION}-${RELEASE}${PACKAGE}${CYCLE}-source.tar.gz sources/
+        tar czvf cloudband-cbnd.${VERSION}-${RELEASE}${PACKAGE}${CYCLE}-docs.tar.gz docs/
         rm -rf sources docs
 
    }
         else
-        tar czvf cloudband-cbis.${VERSION}-${BUILD_NUMBER}-source.tar.gz sources/
-        tar czvf cloudband-cbis.${VERSION}-${BUILD_NUMBER}-docs.tar.gz docs/
+        tar czvf cloudband-cbis.${VERSION}-${RELEASE}${PACKAGE}${CYCLE}-source.tar.gz sources/
+        tar czvf cloudband-cbis.${VERSION}-${RELEASE}${PACKAGE}${CYCLE}-docs.tar.gz docs/
         rm -rf sources docs
 
 fi
