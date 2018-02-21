@@ -103,11 +103,11 @@ pwd
 echo "2222222222222222222222222222222222222222222222222"
 pwd
 
-        mv -f ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/ ${env.WORKSPACE}/${BUILD_DIR}/docs/
+ #       mv -f ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/ ${env.WORKSPACE}/${BUILD_DIR}/docs/
 echo "3333333333333333333333333333333333333333333333333"
 pwd
 
-        rm -rf ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/
+   #     rm -rf ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/
 
 echo "4444444444444444444444444444444444444444444444444"
 pwd
