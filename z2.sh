@@ -102,7 +102,7 @@ elif [ ${PRODUCT} == "CBIS" ]
 
 
         cd sources/
-        cp ${env.WORKSPACE}/repo_list ${env.WORKSPACE}/sources/
+        cp ${env.WORKSPACE}/repo_list ${env.WORKSPACE}/sources/repo_list
 	
         for repo in `cat repo_list` ; do
         #echo item: $repo
