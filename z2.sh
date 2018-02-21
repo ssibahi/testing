@@ -40,10 +40,10 @@ EOF
                 RELEASE_BUILD=$OPTARG
                 ;;
          k)
-                PACKAGE="_"$OPTARG
+                PACKAGE=$OPTARG
                 ;;
 
-         c)     CYCLE="_"$OPTARG
+         c)     CYCLE=$OPTARG
                 ;;
 
          h)
