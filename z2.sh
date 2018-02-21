@@ -104,6 +104,8 @@ elif [ ${PRODUCT} == "CBIS" ]
         cd sources/
         cp ${env.WORKSPACE}/repo_list .
 
+		git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis.git
+
         for repo in `cat repo_list` ; do
         #echo item: $repo
         git clone ssh://git@stash.cloud-band.com:7999/cnode/$repo.git
