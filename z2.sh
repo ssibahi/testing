@@ -94,7 +94,7 @@ elif [ ${PRODUCT} == "CBIS" ]
         wget -r -l1 -nd -A 'cbis-ci*' http://yum.cloud-band.com/cbis_local_repo/${DEV}/${RELEASE_BUILD}/
         cd ../docs
 
-                git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis-component-cudo.git
+        git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis-component-cudo.git
         cd ..
 
         mv ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/* ${env.WORKSPACE}/${BUILD_DIR}/docs/
@@ -102,16 +102,11 @@ elif [ ${PRODUCT} == "CBIS" ]
 
 
         cd sources/
-        cp ${env.WORKSPACE}/repo_list .
-
-		git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis.git
-
+        cp ${env.WORKSPACE}/repo_list ${env.WORKSPACE}/sources/
+	
         for repo in `cat repo_list` ; do
         #echo item: $repo
         git clone ssh://git@stash.cloud-band.com:7999/cnode/$repo.git
-
-
-
 
 done
         cd ..
