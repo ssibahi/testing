@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 # (c) 2018 Nokia Proprietary - Nokia Internal Use
 
@@ -97,25 +98,16 @@ pwd
         wget -r -l1 -nd -A 'cbis-ci*' http://yum.cloud-band.com/cbis_local_repo/${DEV}/${RELEASE}/
         cd ../docs
 
-#                git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis-component-cudo.git
+        git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis-component-cudo.git
         cd ..
 
-echo "2222222222222222222222222222222222222222222222222"
-pwd
+        mv -f ${WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/ ${WORKSPACE}/${BUILD_DIR}/docs/
+        rm -rf ${WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/
 
- #       mv -f ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/ ${env.WORKSPACE}/${BUILD_DIR}/docs/
-echo "3333333333333333333333333333333333333333333333333"
-pwd
-
-   #     rm -rf ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/
-
-echo "4444444444444444444444444444444444444444444444444"
-pwd
         cd sources/
         cp ${WORKSPACE}/repo_list .
-	
 
-	for repo in `cat repo_list` ; do
+        for repo in `cat repo_list` ; do
         #echo item: $repo
         git clone ssh://git@stash.cloud-band.com:7999/cnode/$repo.git
 
@@ -138,7 +130,7 @@ fi
 
 function create_archive() {
 
-        pwd
+        
         if [ ${PRODUCT} == "CBND" ]
         then
 
@@ -150,16 +142,15 @@ function create_archive() {
         tar czvf cloudband-cbnd.${DEV}-${RELEASE}-docs.tar.gz docs/
         tar czvf cloudband-cbnd.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
 
-        #rm -rf sources docs artifacts
+        rm -rf sources docs artifacts
 
    }
             else
-                pwd
-
+                
         tar czvf cloudband-cbis.${DEV}-${RELEASE}-source.tar.gz sources/
         tar czvf cloudband-cbis.${DEV}-${RELEASE}-docs.tar.gz docs/
         tar czvf cloudband-cbis.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
-       #rm -rf sources docs artifacts
+        rm -rf sources docs artifacts
 
 fi
 
@@ -173,7 +164,6 @@ fi
 
         echo "create archive"
         create_archive
-
 
 
 
