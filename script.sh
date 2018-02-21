@@ -102,7 +102,7 @@ elif [ ${PRODUCT} == "CBIS" ]
 
 
         cd sources/
-        cp /tmp/shaharTests/ggg/repo_list1 .
+        cp /tmp/shaharTests/ggg/repo_list .
 
         for repo in `cat repo_list1` ; do
         #echo item: $repo
