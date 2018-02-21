@@ -112,7 +112,8 @@ pwd
 echo "4444444444444444444444444444444444444444444444444"
 pwd
         cd sources/
-        cp ${WORKSPACE}/repo_list ${WORKSPACE}/sources/
+        cp ${WORKSPACE}/repo_list .
+	
 
 	for repo in `cat repo_list` ; do
         #echo item: $repo
