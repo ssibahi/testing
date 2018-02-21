@@ -100,7 +100,8 @@ elif [ ${PRODUCT} == "CBIS" ]
         mv ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/* ${env.WORKSPACE}/${BUILD_DIR}/docs/
         rm -rf ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/
 
-
+echo "1111111111111111111111111111111111111111111111111"
+pwd
         cd sources/
         cp ${env.WORKSPACE}/repo_list ${env.WORKSPACE}/sources/repo_list
 
