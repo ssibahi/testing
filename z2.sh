@@ -40,10 +40,10 @@ EOF
                 RELEASE=$OPTARG
                 ;;
          k)
-                PACKAGE=$OPTARG
+                PACKAGE="_"$OPTARG
                 ;;
 
-         c)     CYCLE=$OPTARG
+         c)     CYCLE="_"$OPTARG
                 ;;
 
          h)
@@ -112,7 +112,7 @@ pwd
 echo "4444444444444444444444444444444444444444444444444"
 pwd
         cd sources/
-        cp ${WORKSPACE}/repo_list ${WORKSPACE}/sources/repo_list
+        cp ${WORKSPACE}/repo_list ${WORKSPACE}/sources/
 
 	for repo in `cat repo_list` ; do
         #echo item: $repo
