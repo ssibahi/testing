@@ -15,7 +15,7 @@ usage: $0 [OPTIONS...]
 OPTIONS:
    -p PRODUCT                   cbnd or cbis
    -v VERSION                   version
-   -d DEV                                               dev version
+   -d DEV                       dev version
    -r RELEASE                   release build
    -k PACKAGE                   package
    -c CYCLE                     cycle
@@ -37,13 +37,13 @@ EOF
                 ;;
 
          r)
-                RELEASE_BUILD=$OPTARG
+                RELEASE=$OPTARG
                 ;;
          k)
-                PACKAGE=$OPTARG
+                PACKAGE="_"$OPTARG
                 ;;
 
-         c)     CYCLE=$OPTARG
+         c)     CYCLE="_"$OPTARG
                 ;;
 
          h)
@@ -82,7 +82,7 @@ EOF
         git clone ssh://prod-barch@stash.cloud-band.com:7999/nfvo/nfvo.git
 
                 cd ../artifacts
-        wget -r -l1 -nd -A 'cbnd-apidocs*.*' http://yum.cloud-band.com/nfvo_local_repo/${DEV}/${RELEASE_BUILD}/
+        wget -r -l1 -nd -A 'cbnd-apidocs*.*' http://yum.cloud-band.com/nfvo_local_repo/${DEV}/${RELEASE}/
 
         }
 
@@ -91,10 +91,10 @@ elif [ ${PRODUCT} == "CBIS" ]
                 {
 
         cd artifacts
-        wget -r -l1 -nd -A 'cbis-ci*' http://yum.cloud-band.com/cbis_local_repo/${DEV}/${RELEASE_BUILD}/
+        wget -r -l1 -nd -A 'cbis-ci*' http://yum.cloud-band.com/cbis_local_repo/${DEV}/${RELEASE}/
         cd ../docs
 
-        git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis-component-cudo.git
+                git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis-component-cudo.git
         cd ..
 
         mv ${env.WORKSPACE}/${BUILD_DIR}/docs/cbis-component-cudo/content/* ${env.WORKSPACE}/${BUILD_DIR}/docs/
@@ -103,10 +103,15 @@ elif [ ${PRODUCT} == "CBIS" ]
 
         cd sources/
         cp ${env.WORKSPACE}/repo_list ${env.WORKSPACE}/sources/repo_list
-	
+
+		git clone ssh://git@stash.cloud-band.com:7999/cnode/cbis.git
+
         for repo in `cat repo_list` ; do
         #echo item: $repo
         git clone ssh://git@stash.cloud-band.com:7999/cnode/$repo.git
+
+
+
 
 done
         cd ..
@@ -132,9 +137,9 @@ function create_archive() {
 
 
         cd ..
-        tar czvf cloudband-cbnd.${DEV}-${RELEASE_BUILD}-source.tar.gz sources/
-        tar czvf cloudband-cbnd.${DEV}-${RELEASE_BUILD}-docs.tar.gz docs/
-        tar czvf cloudband-cbnd.${DEV}-${RELEASE_BUILD}-artifacts.tar.gz artifacts/
+        tar czvf cloudband-cbnd.${DEV}-${RELEASE}-source.tar.gz sources/
+        tar czvf cloudband-cbnd.${DEV}-${RELEASE}-docs.tar.gz docs/
+        tar czvf cloudband-cbnd.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
 
         #rm -rf sources docs artifacts
 
@@ -142,9 +147,9 @@ function create_archive() {
             else
                 pwd
 
-        tar czvf cloudband-cbis.${DEV}-${RELEASE_BUILD}-source.tar.gz sources/
-        tar czvf cloudband-cbis.${DEV}-${RELEASE_BUILD}-docs.tar.gz docs/
-        tar czvf cloudband-cbis.${DEV}-${RELEASE_BUILD}-artifacts.tar.gz artifacts/
+        tar czvf cloudband-cbis.${DEV}-${RELEASE}-source.tar.gz sources/
+        tar czvf cloudband-cbis.${DEV}-${RELEASE}-docs.tar.gz docs/
+        tar czvf cloudband-cbis.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
        #rm -rf sources docs artifacts
 
 fi
@@ -159,6 +164,7 @@ fi
 
         echo "create archive"
         create_archive
+
 
 
 
