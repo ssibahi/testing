@@ -91,8 +91,6 @@ elif [ ${PRODUCT} == "CBIS" ]
                 then
                 {
 
-echo "1111111111111111111111111111111111111111111111111"
-pwd
 
         cd artifacts
         wget -r -l1 -nd -A 'cbis-ci*' http://yum.cloud-band.com/cbis_local_repo/${DEV}/${RELEASE}/
