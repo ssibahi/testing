@@ -15,8 +15,8 @@ usage: $0 [OPTIONS...]
 
 OPTIONS:
    -p PRODUCT                   cbnd or cbis
-   -v VERSION                   version
-   -d DEV                       dev version
+   -v VERSION                   version 17.5, 18 or 18.5
+   -d DEV                       dev version 18.0.0.1 , 18.5.0.1 etc
    -r RELEASE                   release build
    -k PACKAGE                   package
    -c CYCLE                     cycle
@@ -136,9 +136,9 @@ function create_archive() {
 
 
         cd ..
-        tar czvf cloudband-cbnd.${DEV}-${RELEASE}-source.tar.gz sources/
-        tar czvf cloudband-cbnd.${DEV}-${RELEASE}-docs.tar.gz docs/
-        tar czvf cloudband-cbnd.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
+        tar czvf cloudband-${PRODUCT}.${DEV}-${RELEASE}-source.tar.gz sources/
+        tar czvf cloudband-${PRODUCT}.${DEV}-${RELEASE}-docs.tar.gz docs/
+        tar czvf cloudband-${PRODUCT}.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
 
         rm -rf sources docs artifacts
 
@@ -162,6 +162,7 @@ fi
 
         echo "create archive"
         create_archive
+
 
 
 
