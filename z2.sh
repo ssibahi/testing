@@ -63,6 +63,7 @@ EOF
 
         function init() {
         BUILD_DIR="CloudBand_${PRODUCT}_R${VERSION}${PACKAGE}${CYCLE}"
+        echo "${BUILD_DIR}"
         mkdir -p ${BUILD_DIR}
         cd ${BUILD_DIR}
         mkdir sources docs artifacts
