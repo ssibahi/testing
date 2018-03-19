@@ -130,10 +130,10 @@ fi
 function create_archive() {
 
         
-#        if [ ${PRODUCT} == "CBND" ]
-#        then
-#
-#   {
+        if [ ${PRODUCT} == "CBND" ]
+        then
+
+   {
 
 
         cd ..
@@ -143,15 +143,15 @@ function create_archive() {
 
         rm -rf sources docs artifacts
 
-#   }
-#            else
-#                
-#        tar czvf cloudband-cbis.${DEV}-${RELEASE}-source.tar.gz sources/
-#        tar czvf cloudband-cbis.${DEV}-${RELEASE}-docs.tar.gz docs/
-#       tar czvf cloudband-cbis.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
-#        rm -rf sources docs artifacts
+   }
+        else
+                
+        tar czvf cloudband-${PRODUCT}.${DEV}-${RELEASE}-source.tar.gz sources/
+        tar czvf cloudband-${PRODUCT}.${DEV}-${RELEASE}-docs.tar.gz docs/
+        tar czvf cloudband-${PRODUCT}.${DEV}-${RELEASE}-artifacts.tar.gz artifacts/
+        rm -rf sources docs artifacts
 
-#fi
+fi
 
    }
 
